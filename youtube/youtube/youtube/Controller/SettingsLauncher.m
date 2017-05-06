@@ -7,9 +7,23 @@
 //
 
 #import "SettingsLauncher.h"
+#import "Setting.h"
+#import "SettingCell.h"
 
 @implementation SettingsLauncher
+const static NSString *cellId = @"SettingsLauncherCell";
+const static CGFloat cellHeight = 50;
 
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        self.collectionView.dataSource = self;
+        self.collectionView.delegate = self;
+        [self.collectionView registerClass:SettingCell.class forCellWithReuseIdentifier:cellId];
+    }
+    
+    return self;
+}
 - (void)showSettings {
     UIWindow *window = [UIApplication sharedApplication].keyWindow;
     _blackView = [[UIView alloc] init];
@@ -21,7 +35,7 @@
     [window addSubview:_blackView];
     [window addSubview:self.collectionView];
     
-    CGFloat height = 200;
+    CGFloat height = (CGFloat)self.settings.count * cellHeight;
     CGFloat y = window.frame.size.height - height;
     self.collectionView.frame = CGRectMake(0, window.frame.size.height, window.frame.size.width, height);
     
@@ -55,5 +69,41 @@
     _collectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:[[UICollectionViewFlowLayout alloc] init]];
     _collectionView.backgroundColor = [UIColor whiteColor];
     return _collectionView;
+}
+
+- (NSArray<Setting *> *)settings {
+    if (_settings) {
+        return _settings;
+    }
+    
+    _settings = @[[[Setting alloc] initWithName:@"Settings" imageName:@"settings"],
+                  [[Setting alloc] initWithName:@"Terms & privacy policy" imageName:@"privacy"],
+                  [[Setting alloc] initWithName:@"Send Feedback" imageName:@"feedback"],
+                  [[Setting alloc] initWithName:@"Help" imageName:@"help"],
+                  [[Setting alloc] initWithName:@"Switch Account" imageName:@"switch_account"],
+                  [[Setting alloc] initWithName:@"Cancel" imageName:@"cancel"]];
+    
+    return _settings;
+}
+
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    return self.settings.count;
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    SettingCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellId forIndexPath:indexPath];
+    
+    cell.setting = self.settings[indexPath.item];
+    
+    return cell;
+}
+
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+    return CGSizeMake(self.collectionView.frame.size.width, cellHeight);
+}
+
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section {
+    return 0;
 }
 @end

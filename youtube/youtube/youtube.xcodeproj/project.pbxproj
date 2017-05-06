@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		5C36BC211EBDF76D00AEEDAF /* CustomImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C36BC201EBDF76D00AEEDAF /* CustomImageView.m */; };
 		5C36BC241EBDFE4C00AEEDAF /* SettingsLauncher.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C36BC231EBDFE4C00AEEDAF /* SettingsLauncher.m */; };
+		5C36BC2A1EBE6FB900AEEDAF /* SettingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C36BC291EBE6FB900AEEDAF /* SettingCell.m */; };
+		5C36BC2D1EBE71E900AEEDAF /* Setting.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C36BC2C1EBE71E900AEEDAF /* Setting.m */; };
 		5C629A4F1EA6D79800DABB06 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C629A4E1EA6D79800DABB06 /* main.m */; };
 		5C629A521EA6D79800DABB06 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C629A511EA6D79800DABB06 /* AppDelegate.m */; };
 		5C629A5D1EA6D79800DABB06 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C629A5B1EA6D79800DABB06 /* LaunchScreen.storyboard */; };
@@ -28,6 +30,10 @@
 		5C36BC201EBDF76D00AEEDAF /* CustomImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomImageView.m; sourceTree = "<group>"; };
 		5C36BC221EBDFE4C00AEEDAF /* SettingsLauncher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsLauncher.h; sourceTree = "<group>"; };
 		5C36BC231EBDFE4C00AEEDAF /* SettingsLauncher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsLauncher.m; sourceTree = "<group>"; };
+		5C36BC281EBE6FB900AEEDAF /* SettingCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingCell.h; sourceTree = "<group>"; };
+		5C36BC291EBE6FB900AEEDAF /* SettingCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingCell.m; sourceTree = "<group>"; };
+		5C36BC2B1EBE71E900AEEDAF /* Setting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Setting.h; sourceTree = "<group>"; };
+		5C36BC2C1EBE71E900AEEDAF /* Setting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Setting.m; sourceTree = "<group>"; };
 		5C629A4A1EA6D79800DABB06 /* youtube.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = youtube.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C629A4E1EA6D79800DABB06 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		5C629A501EA6D79800DABB06 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -110,6 +116,8 @@
 		5C69900B1EBDD4CE00680161 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				5C36BC2B1EBE71E900AEEDAF /* Setting.h */,
+				5C36BC2C1EBE71E900AEEDAF /* Setting.m */,
 				5C69900C1EBDD4E000680161 /* Video.h */,
 				5C69900D1EBDD4E000680161 /* Video.m */,
 			);
@@ -119,6 +127,8 @@
 		5CF72AAE1EBD53C6008EC38A /* View */ = {
 			isa = PBXGroup;
 			children = (
+				5C36BC281EBE6FB900AEEDAF /* SettingCell.h */,
+				5C36BC291EBE6FB900AEEDAF /* SettingCell.m */,
 				5C36BC1F1EBDF76D00AEEDAF /* CustomImageView.h */,
 				5C36BC201EBDF76D00AEEDAF /* CustomImageView.m */,
 				5C6990071EBDC34200680161 /* BaseCell.h */,
@@ -225,6 +235,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5C36BC2D1EBE71E900AEEDAF /* Setting.m in Sources */,
 				5C6990031EBDBC3A00680161 /* MenuBar.m in Sources */,
 				5C698FFA1EBDB79400680161 /* UIColor+Helpers.m in Sources */,
 				5C6990061EBDC2B700680161 /* MenuCell.m in Sources */,
@@ -235,6 +246,7 @@
 				5C629A521EA6D79800DABB06 /* AppDelegate.m in Sources */,
 				5C6990091EBDC34200680161 /* BaseCell.m in Sources */,
 				5C698FF61EBD54FE00680161 /* UIView+Helpers.m in Sources */,
+				5C36BC2A1EBE6FB900AEEDAF /* SettingCell.m in Sources */,
 				5C698FFD1EBDB9BF00680161 /* HomeController.m in Sources */,
 				5C629A4F1EA6D79800DABB06 /* main.m in Sources */,
 			);
