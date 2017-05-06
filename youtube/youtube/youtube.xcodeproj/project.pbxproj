@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5C36BC1E1EBDEEC700AEEDAF /* UIImageView+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C36BC1D1EBDEEC700AEEDAF /* UIImageView+Helpers.m */; };
 		5C629A4F1EA6D79800DABB06 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C629A4E1EA6D79800DABB06 /* main.m */; };
 		5C629A521EA6D79800DABB06 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C629A511EA6D79800DABB06 /* AppDelegate.m */; };
 		5C629A5D1EA6D79800DABB06 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C629A5B1EA6D79800DABB06 /* LaunchScreen.storyboard */; };
@@ -22,6 +23,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5C36BC1C1EBDEEC700AEEDAF /* UIImageView+Helpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+Helpers.h"; sourceTree = "<group>"; };
+		5C36BC1D1EBDEEC700AEEDAF /* UIImageView+Helpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+Helpers.m"; sourceTree = "<group>"; };
 		5C629A4A1EA6D79800DABB06 /* youtube.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = youtube.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C629A4E1EA6D79800DABB06 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		5C629A501EA6D79800DABB06 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -128,6 +131,8 @@
 		5CF72AAF1EBD53D7008EC38A /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				5C36BC1C1EBDEEC700AEEDAF /* UIImageView+Helpers.h */,
+				5C36BC1D1EBDEEC700AEEDAF /* UIImageView+Helpers.m */,
 				5C698FF81EBDB79400680161 /* UIColor+Helpers.h */,
 				5C698FF91EBDB79400680161 /* UIColor+Helpers.m */,
 				5C698FF41EBD54FE00680161 /* UIView+Helpers.h */,
@@ -221,6 +226,7 @@
 				5C69900E1EBDD4E000680161 /* Video.m in Sources */,
 				5C6990001EBDB9CF00680161 /* VideoCell.m in Sources */,
 				5C629A521EA6D79800DABB06 /* AppDelegate.m in Sources */,
+				5C36BC1E1EBDEEC700AEEDAF /* UIImageView+Helpers.m in Sources */,
 				5C6990091EBDC34200680161 /* BaseCell.m in Sources */,
 				5C698FF61EBD54FE00680161 /* UIView+Helpers.m in Sources */,
 				5C698FFD1EBDB9BF00680161 /* HomeController.m in Sources */,

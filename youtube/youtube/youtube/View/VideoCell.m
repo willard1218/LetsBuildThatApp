@@ -51,6 +51,18 @@
     
 }
 
+- (void)setupProfileImage {
+    if (_video.channel.profileImageName) {
+        [_userProfileImageView loadImageUsingUrlString:_video.channel.profileImageName];
+    }
+}
+
+- (void)setupThumbnailImage {
+    if (_video.thumbnailImageName) {
+        [_thumbnailImageView loadImageUsingUrlString:_video.thumbnailImageName];
+    }
+}
+
 - (UIImageView *)thumbnailImageView {
     if (_thumbnailImageView) {
         return _thumbnailImageView;
@@ -84,6 +96,7 @@
     _userProfileImageView.image = [UIImage imageNamed:@"taylor_swift_profile"];
     _userProfileImageView.layer.cornerRadius = 22;
     _userProfileImageView.layer.masksToBounds = YES;
+    _userProfileImageView.contentMode = UIViewContentModeScaleAspectFit;
     return _userProfileImageView;
 }
 
@@ -123,12 +136,8 @@
 - (void)setVideo:(Video *)video {
     _video = video;
     _titleLabel.text = _video.title;
-    _thumbnailImageView.image = [UIImage imageNamed:_video.thumbnailImageName];
-    
-    if (_video.channel.profileImageName) {
-        _userProfileImageView.image = [UIImage imageNamed:_video.channel.profileImageName];
-    }
-    
+    [self setupProfileImage];
+    [self setupThumbnailImage];
     
     if (_video.channel.name && _video.numberOfViews) {
         NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];

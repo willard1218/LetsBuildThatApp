@@ -20,6 +20,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self fetchVideos];
     self.navigationItem.title = @"Home";
     self.navigationController.navigationBar.translucent = NO;
     
@@ -76,30 +77,37 @@
     
 }
 
-- (NSArray<Video *> *)videos {
-    if (_videos) {
-        return _videos;
-    }
+- (void)fetchVideos {
+    NSURL *url = [NSURL URLWithString:@"https://s3-us-west-2.amazonaws.com/youtubeassets/home.json"];
     
-    Channel *kanyeChannel = [[Channel alloc] init];
-    kanyeChannel.name = @"KanyeIsTheBestChannel";
-    kanyeChannel.profileImageName = @"kanye_profile";
-    
-    Video *blankSpaceVideo = [[Video alloc] init];
-    
-    blankSpaceVideo.title = @"Taylor Swift - Blank Space";
-    blankSpaceVideo.thumbnailImageName = @"taylor_swift_blank_space";
-    blankSpaceVideo.channel = kanyeChannel;
-    blankSpaceVideo.numberOfViews = @23932843093;
-    
-    Video *badBloodVideo = [[Video alloc] init];
-    badBloodVideo.title = @"Taylor Swift - Bad Blood featuring Kendrick Lamar";
-    badBloodVideo.thumbnailImageName = @"taylor_swift_bad_blood";
-    badBloodVideo.channel = kanyeChannel;
-    badBloodVideo.numberOfViews = @57989654934;
-    
-    _videos = @[blankSpaceVideo, badBloodVideo];
-    return _videos;
+    [[[NSURLSession sharedSession] dataTaskWithURL:url completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        if (error) {
+            return ;
+        }
+        
+        NSArray *json = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+        
+        NSMutableArray <Video *> *videos = [NSMutableArray array];
+        
+        for (NSDictionary *dictionary in json) {
+            Video *video = [[Video alloc] init];
+            video.title = dictionary[@"title"];
+            video.thumbnailImageName = dictionary[@"thumbnail_image_name"];
+            
+            NSDictionary *channelDictionary = dictionary[@"channel"];
+            
+            Channel *channel = [[Channel alloc] init];
+            channel.name = channelDictionary[@"name"];
+            channel.profileImageName = channelDictionary[@"profile_image_name"];
+            
+            video.channel = channel;
+            
+            [videos addObject:video];
+        }
+        
+        _videos = videos.copy;
+        
+    }] resume];
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
