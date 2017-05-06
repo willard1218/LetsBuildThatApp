@@ -36,7 +36,7 @@
     
     [self addConstraintsWithFormat:@"V:|-16-[v0]-8-[v1(44)]-16-[v2(1)]|" views:@[_thumbnailImageView, _userProfileImageView, _separatorView]];
     
-    [self addConstraintsWithFormat:@"V:[v0]-8-[v1(20)]-4-[v2(20)]" views:@[_thumbnailImageView, _titleLabel, _subtitleTextView]];
+    [self addConstraintsWithFormat:@"V:[v0]-4-[v1(20)]-4-[v2(30)]" views:@[_thumbnailImageView, _titleLabel, _subtitleTextView]];
     
     [self addConstraintsWithFormat:@"H:|[v0]|" views:@[_separatorView]];
     
@@ -51,6 +51,9 @@
     
     _thumbnailImageView = [[UIImageView alloc] init];
     _thumbnailImageView.backgroundColor = [UIColor blueColor];
+    _thumbnailImageView.image = [UIImage imageNamed:@"taylor_swift_blank_space"];
+    _thumbnailImageView.contentMode = UIViewContentModeScaleAspectFill;
+    _thumbnailImageView.clipsToBounds = YES;
     return _thumbnailImageView;
 }
 
@@ -60,7 +63,7 @@
     }
     
     _separatorView = [[UIView alloc] init];
-    _separatorView.backgroundColor = [UIColor blueColor];
+    _separatorView.backgroundColor = [UIColor colorWithRed:230.0/255 green:230.0/255 blue:230.0/255 alpha:1];
     return _separatorView;
 }
 
@@ -71,6 +74,9 @@
     
     _userProfileImageView = [[UIImageView alloc] init];
     _userProfileImageView.backgroundColor = [UIColor greenColor];
+    _userProfileImageView.image = [UIImage imageNamed:@"taylor_swift_profile"];
+    _userProfileImageView.layer.cornerRadius = 22;
+    _userProfileImageView.layer.masksToBounds = YES;
     return _userProfileImageView;
 }
 
@@ -80,7 +86,7 @@
     }
     
     _titleLabel = [[UILabel alloc] init];
-    _titleLabel.backgroundColor = [UIColor purpleColor];
+    _titleLabel.text = @"Taylor Swift - Blank Space";
     return _titleLabel;
 }
 
@@ -90,7 +96,9 @@
     }
     
     _subtitleTextView = [[UITextView alloc] init];
-    _subtitleTextView.backgroundColor = [UIColor redColor];
+    _subtitleTextView.text = @"TaylorSwiftVEVO • 1,604,684,607 views • 2 years ago";
+    _subtitleTextView.textContainerInset = UIEdgeInsetsMake(0, -4, 0, 0);
+    _subtitleTextView.textColor = [UIColor lightGrayColor];
     return _subtitleTextView;
 }
 @end

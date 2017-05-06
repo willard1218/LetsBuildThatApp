@@ -9,11 +9,12 @@
 /* Begin PBXBuildFile section */
 		5C629A4F1EA6D79800DABB06 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C629A4E1EA6D79800DABB06 /* main.m */; };
 		5C629A521EA6D79800DABB06 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C629A511EA6D79800DABB06 /* AppDelegate.m */; };
-		5C629A551EA6D79800DABB06 /* HomeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C629A541EA6D79800DABB06 /* HomeController.m */; };
 		5C629A5D1EA6D79800DABB06 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C629A5B1EA6D79800DABB06 /* LaunchScreen.storyboard */; };
 		5C629A651EA6D7CB00DABB06 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5C629A641EA6D7CB00DABB06 /* Assets.xcassets */; };
-		5C629A681EA7944A00DABB06 /* VideoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C629A671EA7944A00DABB06 /* VideoCell.m */; };
 		5C698FF61EBD54FE00680161 /* UIView+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C698FF51EBD54FE00680161 /* UIView+Helpers.m */; };
+		5C698FFA1EBDB79400680161 /* UIColor+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C698FF91EBDB79400680161 /* UIColor+Helpers.m */; };
+		5C698FFD1EBDB9BF00680161 /* HomeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C698FFC1EBDB9BF00680161 /* HomeController.m */; };
+		5C6990001EBDB9CF00680161 /* VideoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C698FFF1EBDB9CF00680161 /* VideoCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,16 +22,18 @@
 		5C629A4E1EA6D79800DABB06 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		5C629A501EA6D79800DABB06 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		5C629A511EA6D79800DABB06 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		5C629A531EA6D79800DABB06 /* HomeController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeController.h; sourceTree = "<group>"; };
-		5C629A541EA6D79800DABB06 /* HomeController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeController.m; sourceTree = "<group>"; };
 		5C629A5C1EA6D79800DABB06 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5C629A5E1EA6D79800DABB06 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5C629A641EA6D7CB00DABB06 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		5C629A661EA7944A00DABB06 /* VideoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoCell.h; sourceTree = "<group>"; };
-		5C629A671EA7944A00DABB06 /* VideoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoCell.m; sourceTree = "<group>"; };
 		5C698FF41EBD54FE00680161 /* UIView+Helpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Helpers.h"; sourceTree = "<group>"; };
 		5C698FF51EBD54FE00680161 /* UIView+Helpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Helpers.m"; sourceTree = "<group>"; };
 		5C698FF71EBD56F100680161 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		5C698FF81EBDB79400680161 /* UIColor+Helpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Helpers.h"; sourceTree = "<group>"; };
+		5C698FF91EBDB79400680161 /* UIColor+Helpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Helpers.m"; sourceTree = "<group>"; };
+		5C698FFB1EBDB9BF00680161 /* HomeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeController.h; sourceTree = "<group>"; };
+		5C698FFC1EBDB9BF00680161 /* HomeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeController.m; sourceTree = "<group>"; };
+		5C698FFE1EBDB9CF00680161 /* VideoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoCell.h; sourceTree = "<group>"; };
+		5C698FFF1EBDB9CF00680161 /* VideoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,10 +72,6 @@
 				5CF72AAE1EBD53C6008EC38A /* View */,
 				5C629A501EA6D79800DABB06 /* AppDelegate.h */,
 				5C629A511EA6D79800DABB06 /* AppDelegate.m */,
-				5C629A531EA6D79800DABB06 /* HomeController.h */,
-				5C629A541EA6D79800DABB06 /* HomeController.m */,
-				5C629A661EA7944A00DABB06 /* VideoCell.h */,
-				5C629A671EA7944A00DABB06 /* VideoCell.m */,
 				5C629A5B1EA6D79800DABB06 /* LaunchScreen.storyboard */,
 				5C629A641EA6D7CB00DABB06 /* Assets.xcassets */,
 				5C629A5E1EA6D79800DABB06 /* Info.plist */,
@@ -92,6 +91,8 @@
 		5CF72AAE1EBD53C6008EC38A /* View */ = {
 			isa = PBXGroup;
 			children = (
+				5C698FFE1EBDB9CF00680161 /* VideoCell.h */,
+				5C698FFF1EBDB9CF00680161 /* VideoCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -99,6 +100,8 @@
 		5CF72AAF1EBD53D7008EC38A /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				5C698FF81EBDB79400680161 /* UIColor+Helpers.h */,
+				5C698FF91EBDB79400680161 /* UIColor+Helpers.m */,
 				5C698FF41EBD54FE00680161 /* UIView+Helpers.h */,
 				5C698FF51EBD54FE00680161 /* UIView+Helpers.m */,
 			);
@@ -108,6 +111,8 @@
 		5CF72AB01EBD53E1008EC38A /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				5C698FFB1EBDB9BF00680161 /* HomeController.h */,
+				5C698FFC1EBDB9BF00680161 /* HomeController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -182,10 +187,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5C629A551EA6D79800DABB06 /* HomeController.m in Sources */,
-				5C629A681EA7944A00DABB06 /* VideoCell.m in Sources */,
+				5C698FFA1EBDB79400680161 /* UIColor+Helpers.m in Sources */,
+				5C6990001EBDB9CF00680161 /* VideoCell.m in Sources */,
 				5C629A521EA6D79800DABB06 /* AppDelegate.m in Sources */,
 				5C698FF61EBD54FE00680161 /* UIView+Helpers.m in Sources */,
+				5C698FFD1EBDB9BF00680161 /* HomeController.m in Sources */,
 				5C629A4F1EA6D79800DABB06 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

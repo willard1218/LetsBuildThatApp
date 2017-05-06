@@ -24,6 +24,17 @@
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:vc];
     self.window.rootViewController = navigationController;
     
+    
+    [[UINavigationBar appearance] setBarTintColor:[UIColor rgb:230 green:32 blue:31]];
+    
+    application.statusBarStyle = UIStatusBarStyleLightContent;
+    
+    UIView *statusBarBackgroundView = [[UIView alloc] init];
+    statusBarBackgroundView.backgroundColor = [UIColor rgb:194 green:31 blue:31];
+    
+    [self.window addSubview:statusBarBackgroundView];
+    [self.window addConstraintsWithFormat:@"H:|[v0]|" views:@[statusBarBackgroundView]];
+    [self.window addConstraintsWithFormat:@"V:|[v0(20)]" views:@[statusBarBackgroundView]];
     return YES;
 }
 

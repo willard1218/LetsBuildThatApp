@@ -17,6 +17,6 @@
 #endif
 
 #import "UIView+Helpers.h"
-
+#import "UIColor+Helpers.h"
 #endif
 #endif /* PrefixHeader_pch */
