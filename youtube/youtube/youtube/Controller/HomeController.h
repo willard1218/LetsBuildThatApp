@@ -7,9 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-
+@class Setting;
 @interface HomeController : UICollectionViewController <UICollectionViewDelegateFlowLayout>
 
-
+- (void)showControllerForSetting:(Setting *)setting;
 @end
 

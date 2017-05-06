@@ -11,6 +11,7 @@
 #import "MenuBar.h"
 #import "Video.h"
 #import "SettingsLauncher.h"
+#import "Setting.h"
 @interface HomeController ()
 @property (nonatomic, strong) MenuBar *menuBar;
 @property (nonatomic, strong) NSArray <Video *> *videos;
@@ -123,7 +124,19 @@
     }
     
     _settingsLauncher = [[SettingsLauncher alloc] init];
+    _settingsLauncher.homeController = self;
     return _settingsLauncher;
+}
+
+- (void)showControllerForSetting:(Setting *)setting {
+    UIViewController *dummySettingsViewController = [[UIViewController alloc] init];
+    
+    dummySettingsViewController.view.backgroundColor = [UIColor whiteColor];
+    dummySettingsViewController.navigationItem.title = setting.name;
+    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+    self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName: [UIColor whiteColor]};
+    
+    [self.navigationController pushViewController:dummySettingsViewController animated:YES];
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {

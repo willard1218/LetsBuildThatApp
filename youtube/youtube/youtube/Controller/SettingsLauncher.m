@@ -29,7 +29,7 @@ const static CGFloat cellHeight = 50;
     _blackView = [[UIView alloc] init];
     _blackView.backgroundColor = [UIColor colorWithWhite:0 alpha:0.5];
     
-    UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleDismiss)];
+    UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleDismiss:)];
     
     [_blackView addGestureRecognizer:tapGestureRecognizer];
     [window addSubview:_blackView];
@@ -49,8 +49,8 @@ const static CGFloat cellHeight = 50;
     
 }
 
-- (void)handleDismiss {
-    [UIView animateWithDuration:0.5 animations:^{
+- (void)handleDismiss:(Setting *)setting {
+     [UIView animateWithDuration:0.5 delay:0 usingSpringWithDamping:1 initialSpringVelocity:1 options:UIViewAnimationOptionCurveEaseOut animations:^{
         self.blackView.alpha = 0;
         UIWindow *window = [UIApplication sharedApplication].keyWindow;
         
@@ -58,6 +58,10 @@ const static CGFloat cellHeight = 50;
                                                window.frame.size.height,
                                                self.collectionView.frame.size.width,
                                                self.collectionView.frame.size.height);
+    } completion:^(BOOL finished) {
+        if ([setting isKindOfClass:Setting.class] && ![setting.name isEqualToString:@""] && ![setting.name isEqualToString:@"Cancel"]) {
+            [self.homeController showControllerForSetting:setting];
+        }
     }];
 }
 
@@ -105,5 +109,10 @@ const static CGFloat cellHeight = 50;
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section {
     return 0;
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    Setting *setting = self.settings[indexPath.item];
+    [self handleDismiss:setting];
 }
 @end
