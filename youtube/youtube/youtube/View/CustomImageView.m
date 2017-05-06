@@ -16,9 +16,10 @@
     
     self.image = nil;
     
-    UIImage *imageCache = [_imageCache objectForKey:urlString];
-    if (imageCache) {
-        self.image = imageCache;
+    UIImage *imageFromCache = [self.imageCache objectForKey:urlString];
+    if (imageFromCache) {
+        self.image = imageFromCache;
+        return;
     }
     
     [[[NSURLSession sharedSession] dataTaskWithURL:url completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
@@ -40,4 +41,12 @@
     
 }
 
+- (NSCache *)imageCache {
+    if (_imageCache) {
+        return _imageCache;
+    }
+    
+    _imageCache = [[NSCache alloc] init];
+    return _imageCache;
+}
 @end

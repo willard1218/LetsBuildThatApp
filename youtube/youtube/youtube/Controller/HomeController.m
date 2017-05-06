@@ -72,6 +72,7 @@
 
 - (void)handleMore {
     
+    [self.collectionView reloadData];
 }
 - (void)handleSearch {
     
