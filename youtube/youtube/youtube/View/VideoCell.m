@@ -7,19 +7,18 @@
 //
 
 #import "VideoCell.h"
+@interface VideoCell()
+@property (nonatomic, strong) UIImageView *thumbnailImageView;
+@property (nonatomic, strong) UIView *separatorView;
+@property (nonatomic, strong) UIImageView *userProfileImageView;
+@property (nonatomic, strong) UILabel *titleLabel;
+@property (nonatomic, strong) UITextView *subtitleTextView;
+@end
 
 @implementation VideoCell
 
-- (instancetype)initWithFrame:(CGRect)frame {
-    self = [super initWithFrame:frame];
-    if (self) {
-        [self setupViews];
-    }
-    
-    return self;
-}
-
 - (void)setupViews {
+    [super setupViews];
     [self addSubview:self.thumbnailImageView];
     [self addSubview:self.separatorView];
     [self addSubview:self.userProfileImageView];

@@ -8,8 +8,9 @@
 
 #import "HomeController.h"
 #import "VideoCell.h"
+#import "MenuBar.h"
 @interface HomeController ()
-
+@property (nonatomic, strong) MenuBar *menuBar;
 @end
 
 @implementation HomeController
@@ -28,8 +29,26 @@
     self.navigationItem.titleView = titleLabel;
     
     self.collectionView.backgroundColor = [UIColor whiteColor];
+    self.collectionView.contentInset = UIEdgeInsetsMake(50, 0, 0, 0);
+    self.collectionView.scrollIndicatorInsets = UIEdgeInsetsMake(50, 0, 0, 0);
     
     [self.collectionView registerClass:VideoCell.class forCellWithReuseIdentifier:@"cellId"];
+    [self setupMenuBar];
+}
+
+- (MenuBar *)menuBar {
+    if (_menuBar) {
+        return _menuBar;
+    }
+    
+    _menuBar = [[MenuBar alloc] init];
+    return _menuBar;
+}
+
+- (void)setupMenuBar {
+    [self.view addSubview:self.menuBar];
+    [self.view addConstraintsWithFormat:@"H:|[v0]|" views:@[_menuBar]];
+    [self.view addConstraintsWithFormat:@"V:|[v0(50)]" views:@[_menuBar]];
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {

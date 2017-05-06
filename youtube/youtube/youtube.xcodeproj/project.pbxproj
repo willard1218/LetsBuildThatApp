@@ -15,6 +15,9 @@
 		5C698FFA1EBDB79400680161 /* UIColor+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C698FF91EBDB79400680161 /* UIColor+Helpers.m */; };
 		5C698FFD1EBDB9BF00680161 /* HomeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C698FFC1EBDB9BF00680161 /* HomeController.m */; };
 		5C6990001EBDB9CF00680161 /* VideoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C698FFF1EBDB9CF00680161 /* VideoCell.m */; };
+		5C6990031EBDBC3A00680161 /* MenuBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C6990021EBDBC3A00680161 /* MenuBar.m */; };
+		5C6990061EBDC2B700680161 /* MenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C6990051EBDC2B700680161 /* MenuCell.m */; };
+		5C6990091EBDC34200680161 /* BaseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C6990081EBDC34200680161 /* BaseCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +37,12 @@
 		5C698FFC1EBDB9BF00680161 /* HomeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeController.m; sourceTree = "<group>"; };
 		5C698FFE1EBDB9CF00680161 /* VideoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoCell.h; sourceTree = "<group>"; };
 		5C698FFF1EBDB9CF00680161 /* VideoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoCell.m; sourceTree = "<group>"; };
+		5C6990011EBDBC3A00680161 /* MenuBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuBar.h; sourceTree = "<group>"; };
+		5C6990021EBDBC3A00680161 /* MenuBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuBar.m; sourceTree = "<group>"; };
+		5C6990041EBDC2B700680161 /* MenuCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuCell.h; sourceTree = "<group>"; };
+		5C6990051EBDC2B700680161 /* MenuCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuCell.m; sourceTree = "<group>"; };
+		5C6990071EBDC34200680161 /* BaseCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseCell.h; sourceTree = "<group>"; };
+		5C6990081EBDC34200680161 /* BaseCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,8 +100,14 @@
 		5CF72AAE1EBD53C6008EC38A /* View */ = {
 			isa = PBXGroup;
 			children = (
+				5C6990071EBDC34200680161 /* BaseCell.h */,
+				5C6990081EBDC34200680161 /* BaseCell.m */,
+				5C6990041EBDC2B700680161 /* MenuCell.h */,
+				5C6990051EBDC2B700680161 /* MenuCell.m */,
 				5C698FFE1EBDB9CF00680161 /* VideoCell.h */,
 				5C698FFF1EBDB9CF00680161 /* VideoCell.m */,
+				5C6990011EBDBC3A00680161 /* MenuBar.h */,
+				5C6990021EBDBC3A00680161 /* MenuBar.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -187,9 +202,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5C6990031EBDBC3A00680161 /* MenuBar.m in Sources */,
 				5C698FFA1EBDB79400680161 /* UIColor+Helpers.m in Sources */,
+				5C6990061EBDC2B700680161 /* MenuCell.m in Sources */,
 				5C6990001EBDB9CF00680161 /* VideoCell.m in Sources */,
 				5C629A521EA6D79800DABB06 /* AppDelegate.m in Sources */,
+				5C6990091EBDC34200680161 /* BaseCell.m in Sources */,
 				5C698FF61EBD54FE00680161 /* UIView+Helpers.m in Sources */,
 				5C698FFD1EBDB9BF00680161 /* HomeController.m in Sources */,
 				5C629A4F1EA6D79800DABB06 /* main.m in Sources */,

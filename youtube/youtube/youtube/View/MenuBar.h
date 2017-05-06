@@ -1,13 +1,13 @@
 //
-//  VideoCell.h
+//  MenuBar.h
 //  youtube
 //
-//  Created by willard on 2017/4/19.
+//  Created by willard on 2017/5/6.
 //  Copyright © 2017年 willard. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
-#import "BaseCell.h"
-@interface VideoCell : BaseCell
+
+@interface MenuBar : UIView
 
 @end

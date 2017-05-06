@@ -27,6 +27,10 @@
     
     [[UINavigationBar appearance] setBarTintColor:[UIColor rgb:230 green:32 blue:31]];
     
+    // get rid of black bar underneath navbar
+    [UINavigationBar appearance].shadowImage = [[UIImage alloc] init];
+    [[UINavigationBar appearance] setBackgroundImage:[[UIImage alloc] init] forBarMetrics:UIBarMetricsDefault];
+    
     application.statusBarStyle = UIStatusBarStyleLightContent;
     
     UIView *statusBarBackgroundView = [[UIView alloc] init];
