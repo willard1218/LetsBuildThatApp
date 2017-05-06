@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "BaseCell.h"
+@class Video;
 @interface VideoCell : BaseCell
-
+@property (nonatomic, strong) Video *video;
 @end

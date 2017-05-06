@@ -7,15 +7,20 @@
 //
 
 #import "VideoCell.h"
+#import "Video.h"
+
 @interface VideoCell()
 @property (nonatomic, strong) UIImageView *thumbnailImageView;
 @property (nonatomic, strong) UIView *separatorView;
 @property (nonatomic, strong) UIImageView *userProfileImageView;
 @property (nonatomic, strong) UILabel *titleLabel;
 @property (nonatomic, strong) UITextView *subtitleTextView;
+
+@property (nonatomic, strong) NSLayoutConstraint *titleLabelHeightConstraint;
 @end
 
 @implementation VideoCell
+@synthesize video = _video;
 
 - (void)setupViews {
     [super setupViews];
@@ -33,9 +38,12 @@
     
     [self addConstraintsWithFormat:@"H:[v0(44)]-(8)-[v1]-16-|" views:@[_userProfileImageView, _subtitleTextView]];
     
-    [self addConstraintsWithFormat:@"V:|-16-[v0]-8-[v1(44)]-16-[v2(1)]|" views:@[_thumbnailImageView, _userProfileImageView, _separatorView]];
+    [self addConstraintsWithFormat:@"V:|-16-[v0]-8-[v1(44)]-32-[v2(1)]|" views:@[_thumbnailImageView, _userProfileImageView, _separatorView]];
     
-    [self addConstraintsWithFormat:@"V:[v0]-4-[v1(20)]-4-[v2(30)]" views:@[_thumbnailImageView, _titleLabel, _subtitleTextView]];
+    [self addConstraintsWithFormat:@"V:[v0]-4-[v1]-4-[v2(30)]" views:@[_thumbnailImageView, _titleLabel, _subtitleTextView]];
+    
+    _titleLabelHeightConstraint = [_titleLabel.heightAnchor constraintEqualToConstant:44];
+    _titleLabelHeightConstraint.active = YES;
     
     [self addConstraintsWithFormat:@"H:|[v0]|" views:@[_separatorView]];
     
@@ -86,6 +94,7 @@
     
     _titleLabel = [[UILabel alloc] init];
     _titleLabel.text = @"Taylor Swift - Blank Space";
+    _titleLabel.numberOfLines = 2;
     return _titleLabel;
 }
 
@@ -100,4 +109,51 @@
     _subtitleTextView.textColor = [UIColor lightGrayColor];
     return _subtitleTextView;
 }
+
+
+- (Video *)video {
+    if (!_video) {
+        return _video;
+    }
+    
+    _video = [[Video alloc] init];
+    return _video;
+}
+
+- (void)setVideo:(Video *)video {
+    _video = video;
+    _titleLabel.text = _video.title;
+    _thumbnailImageView.image = [UIImage imageNamed:_video.thumbnailImageName];
+    
+    if (_video.channel.profileImageName) {
+        _userProfileImageView.image = [UIImage imageNamed:_video.channel.profileImageName];
+    }
+    
+    
+    if (_video.channel.name && _video.numberOfViews) {
+        NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
+        
+        numberFormatter.numberStyle = NSNumberFormatterDecimalStyle;
+        
+        NSString *subtitleText = [NSString stringWithFormat:@"%@ • %@ • 2 years ago ", _video.channel.name, [numberFormatter stringFromNumber:_video.numberOfViews]];
+        
+        _subtitleTextView.text = subtitleText;
+    }
+    
+    
+    if (_video.title) {
+        CGSize size = CGSizeMake(self.frame.size.width - 16 - 44 - 8 - 16, 1000);
+        NSStringDrawingOptions options = (NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading);
+        CGRect estimatedRect = [_video.title boundingRectWithSize:size options:options attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:14]} context:nil];
+        
+        if (estimatedRect.size.height > 20) {
+            _titleLabelHeightConstraint.constant = 44;
+        } else {
+            _titleLabelHeightConstraint.constant = 20;
+        }
+        
+        
+    }
+}
+
 @end
