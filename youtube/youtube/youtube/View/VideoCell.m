@@ -8,11 +8,11 @@
 
 #import "VideoCell.h"
 #import "Video.h"
-
+#import "CustomImageView.h"
 @interface VideoCell()
-@property (nonatomic, strong) UIImageView *thumbnailImageView;
+@property (nonatomic, strong) CustomImageView *thumbnailImageView;
 @property (nonatomic, strong) UIView *separatorView;
-@property (nonatomic, strong) UIImageView *userProfileImageView;
+@property (nonatomic, strong) CustomImageView *userProfileImageView;
 @property (nonatomic, strong) UILabel *titleLabel;
 @property (nonatomic, strong) UITextView *subtitleTextView;
 
@@ -68,7 +68,7 @@
         return _thumbnailImageView;
     }
     
-    _thumbnailImageView = [[UIImageView alloc] init];
+    _thumbnailImageView = [[CustomImageView alloc] init];
     _thumbnailImageView.backgroundColor = [UIColor blueColor];
     _thumbnailImageView.image = [UIImage imageNamed:@"taylor_swift_blank_space"];
     _thumbnailImageView.contentMode = UIViewContentModeScaleAspectFill;
@@ -91,7 +91,7 @@
         return _userProfileImageView;
     }
     
-    _userProfileImageView = [[UIImageView alloc] init];
+    _userProfileImageView = [[CustomImageView alloc] init];
     _userProfileImageView.backgroundColor = [UIColor greenColor];
     _userProfileImageView.image = [UIImage imageNamed:@"taylor_swift_profile"];
     _userProfileImageView.layer.cornerRadius = 22;

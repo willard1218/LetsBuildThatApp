@@ -1,5 +1,5 @@
 //
-//  UIImageView+Helpers.h
+//  CustomImageView.h
 //  youtube
 //
 //  Created by willard on 2017/5/6.
@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface UIImageView (Helpers)
+@interface CustomImageView : UIImageView
+@property (nonatomic, strong) NSCache *imageCache;
+@property (nonatomic, strong) NSString *imageUrlString;
 - (void)loadImageUsingUrlString:(NSString *)urlString;
 @end
