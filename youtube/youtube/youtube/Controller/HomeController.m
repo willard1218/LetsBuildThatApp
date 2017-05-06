@@ -10,9 +10,11 @@
 #import "VideoCell.h"
 #import "MenuBar.h"
 #import "Video.h"
+#import "SettingsLauncher.h"
 @interface HomeController ()
 @property (nonatomic, strong) MenuBar *menuBar;
 @property (nonatomic, strong) NSArray <Video *> *videos;
+@property (nonatomic, strong) SettingsLauncher *settingsLauncher;
 @end
 
 @implementation HomeController
@@ -71,9 +73,9 @@
 }
 
 - (void)handleMore {
-    
-    [self.collectionView reloadData];
+    [self.settingsLauncher showSettings];
 }
+
 - (void)handleSearch {
     
 }
@@ -113,6 +115,15 @@
         
         
     }] resume];
+}
+
+- (SettingsLauncher *)settingsLauncher {
+    if (_settingsLauncher) {
+        return _settingsLauncher;
+    }
+    
+    _settingsLauncher = [[SettingsLauncher alloc] init];
+    return _settingsLauncher;
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
