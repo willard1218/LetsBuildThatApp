@@ -1,0 +1,22 @@
+//
+//  PrefixHeader.pch
+//  youtube
+//
+//  Created by willard on 2017/5/6.
+//  Copyright © 2017年 willard. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+#ifdef __OBJC__
+#ifndef __IPHONE_OS_VERSION_MIN_REQUIRED
+#define __IPHONE_OS_VERSION_MIN_REQUIRED __IPHONE_3_0
+#endif
+
+#import "UIView+Helpers.h"
+
+#endif
+#endif /* PrefixHeader_pch */
