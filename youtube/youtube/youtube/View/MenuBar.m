@@ -10,7 +10,7 @@
 #import "MenuCell.h"
 
 @interface MenuBar() <UICollectionViewDelegate ,UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
-@property (nonatomic, strong) UICollectionView *collectionView;
+
 @end
 
 @implementation MenuBar
@@ -63,12 +63,7 @@ static const NSString *cellId = @"cellId";
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    CGFloat x = indexPath.item * self.frame.size.width / 4;
-    _horizontalBarLeftAnchorConstraint.constant = x;
-    
-    [UIView animateWithDuration:0.75 delay:0 usingSpringWithDamping:1 initialSpringVelocity:1 options:UIViewAnimationOptionCurveEaseOut animations:^{
-        [self layoutIfNeeded];
-    } completion:nil];
+    [_homeController scrollToMenuIndex:indexPath.item];
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {

@@ -25,23 +25,37 @@
     [super viewDidLoad];
     
     [self fetchVideos];
-    self.navigationItem.title = @"Home";
+
     self.navigationController.navigationBar.translucent = NO;
     
     UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width - 32, self.view.frame.size.height)];
     
-    titleLabel.text = @"Home";
+    titleLabel.text = @"  Home";
     titleLabel.textColor = [UIColor whiteColor];
     titleLabel.font = [UIFont systemFontOfSize:20];
     self.navigationItem.titleView = titleLabel;
+    
+  
+    [self setupMenuBar];
+    [self setupNavBarButtons];
+    [self setupCollectionView];
+}
+
+- (void)setupCollectionView {
+    if ([self.collectionView.collectionViewLayout isKindOfClass:UICollectionViewFlowLayout.class]) {
+        UICollectionViewFlowLayout *flowLayout = (UICollectionViewFlowLayout *)self.collectionView.collectionViewLayout;
+        
+        flowLayout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
+        flowLayout.minimumLineSpacing = 0;
+    }
     
     self.collectionView.backgroundColor = [UIColor whiteColor];
     self.collectionView.contentInset = UIEdgeInsetsMake(50, 0, 0, 0);
     self.collectionView.scrollIndicatorInsets = UIEdgeInsetsMake(50, 0, 0, 0);
     
-    [self.collectionView registerClass:VideoCell.class forCellWithReuseIdentifier:@"cellId"];
-    [self setupMenuBar];
-    [self setupNavBarButtons];
+    [self.collectionView registerClass:UICollectionViewCell.class forCellWithReuseIdentifier:@"cellId"];
+    
+    self.collectionView.pagingEnabled = YES;
 }
 
 - (MenuBar *)menuBar {
@@ -50,14 +64,41 @@
     }
     
     _menuBar = [[MenuBar alloc] init];
+    _menuBar.homeController = self;
     return _menuBar;
 }
 
 - (void)setupMenuBar {
+    self.navigationController.hidesBarsOnSwipe = YES;
+    
+    UIView *redView = [[UIView alloc] init];
+    redView.backgroundColor = [UIColor rgb:230 green:32 blue:31];
+    
+    [self.view addSubview:redView];
+    [self.view addConstraintsWithFormat:@"H:|[v0]|" views:@[redView]];
+    [self.view addConstraintsWithFormat:@"V:[v0(50)]" views:@[redView]];
+    
+    
     [self.view addSubview:self.menuBar];
     [self.view addConstraintsWithFormat:@"H:|[v0]|" views:@[_menuBar]];
-    [self.view addConstraintsWithFormat:@"V:|[v0(50)]" views:@[_menuBar]];
+    [self.view addConstraintsWithFormat:@"V:[v0(50)]" views:@[_menuBar]];
+    
+    [_menuBar.topAnchor constraintEqualToAnchor:self.topLayoutGuide.bottomAnchor].active = YES;
 }
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    _menuBar.horizontalBarLeftAnchorConstraint.constant = scrollView.contentOffset.x / 4;
+}
+
+- (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset {
+    NSInteger index = (CGFloat) targetContentOffset->x / self.view.frame.size.width;
+    
+    NSIndexPath *indexPath = [NSIndexPath indexPathForItem:index inSection:0];
+    NSLog(@"%@", indexPath);
+    [_menuBar.collectionView selectItemAtIndexPath:indexPath animated:YES scrollPosition:UICollectionViewScrollPositionNone];
+    
+}
+
 
 - (void)setupNavBarButtons {
     UIImage *searchImage = [[UIImage imageNamed:@"search_icon"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
@@ -79,7 +120,12 @@
 }
 
 - (void)handleSearch {
-    
+    [self scrollToMenuIndex:2];
+}
+
+- (void)scrollToMenuIndex:(NSInteger)menuIndex {
+    NSIndexPath *indexPath = [NSIndexPath indexPathForItem:menuIndex inSection:0];
+    [self.collectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionNone animated:YES];
 }
 
 - (void)fetchVideos {
@@ -88,6 +134,7 @@
         [self.collectionView reloadData];
     }];
 }
+
 - (SettingsLauncher *)settingsLauncher {
     if (_settingsLauncher) {
         return _settingsLauncher;
@@ -110,23 +157,20 @@
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return self.videos.count;
+    return 4;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    VideoCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cellId" forIndexPath:indexPath];
+    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cellId" forIndexPath:indexPath];
     
-    cell.video = self.videos[indexPath.item];
+    NSArray *colors = @[[UIColor blueColor], [UIColor greenColor], [UIColor grayColor], [UIColor purpleColor]];
+    cell.backgroundColor = colors[indexPath.item];
     return cell;
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-    CGFloat height = (self.view.frame.size.width - 16 - 16) * 9 / 16;
-    CGSize size = CGSizeMake(self.view.frame.size.width, height + 16 + 88);
+    CGSize size = CGSizeMake(self.view.frame.size.width, self.view.frame.size.height);
     return size;
 }
 
-- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section {
-    return 0;
-}
 @end

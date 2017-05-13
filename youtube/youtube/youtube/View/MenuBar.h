@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "HomeController.h"
 @interface MenuBar : UIView
 @property (nonatomic, strong) NSLayoutConstraint *horizontalBarLeftAnchorConstraint;
+@property (nonatomic, weak) HomeController *homeController;
+@property (nonatomic, strong) UICollectionView *collectionView;
 @end
