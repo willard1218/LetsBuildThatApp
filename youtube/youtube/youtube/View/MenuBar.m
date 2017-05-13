@@ -27,9 +27,27 @@ static const NSString *cellId = @"cellId";
         
         NSIndexPath *selectedIndexPath = [NSIndexPath indexPathForRow:0 inSection:0];
         [self.collectionView selectItemAtIndexPath:selectedIndexPath animated:NO scrollPosition:UICollectionViewScrollPositionNone];
+        
+        [self setupHorizontalBar];
     }
     
     return self;
+}
+
+- (void)setupHorizontalBar {
+    UIView *horizontalBarView = [[UIView alloc] init];
+    horizontalBarView.backgroundColor = [UIColor colorWithWhite:0.95 alpha:1];
+    horizontalBarView.translatesAutoresizingMaskIntoConstraints = NO;
+    [self addSubview:horizontalBarView];
+    
+    _horizontalBarLeftAnchorConstraint = [horizontalBarView.leftAnchor constraintEqualToAnchor:self.leftAnchor];
+    
+    _horizontalBarLeftAnchorConstraint.active = YES;
+    
+    [horizontalBarView.bottomAnchor constraintEqualToAnchor:self.bottomAnchor].active = YES;
+    [horizontalBarView.widthAnchor constraintEqualToAnchor:self.widthAnchor multiplier:1.f/4].active = YES;
+    [horizontalBarView.heightAnchor constraintEqualToConstant:4].active = YES;
+    
 }
 
 - (UICollectionView *)collectionView {
@@ -42,6 +60,15 @@ static const NSString *cellId = @"cellId";
     _collectionView.delegate = self;
     _collectionView.dataSource = self;
     return _collectionView;
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    CGFloat x = indexPath.item * self.frame.size.width / 4;
+    _horizontalBarLeftAnchorConstraint.constant = x;
+    
+    [UIView animateWithDuration:0.75 delay:0 usingSpringWithDamping:1 initialSpringVelocity:1 options:UIViewAnimationOptionCurveEaseOut animations:^{
+        [self layoutIfNeeded];
+    } completion:nil];
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {

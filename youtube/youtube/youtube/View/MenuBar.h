@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface MenuBar : UIView
-
+@property (nonatomic, strong) NSLayoutConstraint *horizontalBarLeftAnchorConstraint;
 @end

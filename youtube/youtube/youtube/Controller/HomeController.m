@@ -12,6 +12,7 @@
 #import "Video.h"
 #import "SettingsLauncher.h"
 #import "Setting.h"
+#import "ApiService.h"
 @interface HomeController ()
 @property (nonatomic, strong) MenuBar *menuBar;
 @property (nonatomic, strong) NSArray <Video *> *videos;
@@ -82,42 +83,11 @@
 }
 
 - (void)fetchVideos {
-    NSURL *url = [NSURL URLWithString:@"https://s3-us-west-2.amazonaws.com/youtubeassets/home.json"];
-    
-    [[[NSURLSession sharedSession] dataTaskWithURL:url completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-        if (error) {
-            return ;
-        }
-        
-        NSArray *json = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
-        
-        NSMutableArray <Video *> *videos = [NSMutableArray array];
-        
-        for (NSDictionary *dictionary in json) {
-            Video *video = [[Video alloc] init];
-            video.title = dictionary[@"title"];
-            video.thumbnailImageName = dictionary[@"thumbnail_image_name"];
-            
-            NSDictionary *channelDictionary = dictionary[@"channel"];
-            
-            Channel *channel = [[Channel alloc] init];
-            channel.name = channelDictionary[@"name"];
-            channel.profileImageName = channelDictionary[@"profile_image_name"];
-            
-            video.channel = channel;
-            
-            [videos addObject:video];
-        }
-        
-        _videos = videos.copy;
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self.collectionView reloadData];
-        });
-        
-        
-    }] resume];
+    [[ApiService sharedInstance] fetchVideosWithDownloadCompletion:^(NSArray<Video *> *videos) {
+        _videos = videos;
+        [self.collectionView reloadData];
+    }];
 }
-
 - (SettingsLauncher *)settingsLauncher {
     if (_settingsLauncher) {
         return _settingsLauncher;
